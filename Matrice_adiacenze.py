@@ -45,7 +45,6 @@ for x in sorted(adiacenze):
         if len(adiacenze[x]) == 1:
             nodi.append(x)
 print(nodi)
-# Verificare se tale lista di nodi si può ricavare da una funzione di nx
 
 # Calcolo Floyd-Warshall
 G = nx.Graph()
@@ -56,14 +55,8 @@ for x in sorted(adiacenze):
 print(G)
 print(list(G.nodes))
 print(list(G.edges))
-#Matrice
-F_W = nx.floyd_warshall_numpy(G) 
 #Dizionario
 f_w = nx.floyd_warshall(G)
-
-with open('distanze_matrice.csv', 'w', encoding='UTF8', newline='') as f:
-    writer = csv.writer(f)
-    writer.writerows(F_W)
 
 #Scrivo solo le distanze tra i punti "notevoli" della lista nodi
 with open('distanze.csv', 'w', encoding='UTF8', newline='') as f:
