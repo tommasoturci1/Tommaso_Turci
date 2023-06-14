@@ -30,7 +30,7 @@ for node in nodes:
     adiacenze.update({node: punti_adiacenti})
 
 # Scrittura risultati in file csv
-with open('risultati.csv', 'w', encoding='UTF8', newline='') as f:
+with open('adiacenze.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
     for x in sorted(adiacenze):
         writer.writerow(x)
