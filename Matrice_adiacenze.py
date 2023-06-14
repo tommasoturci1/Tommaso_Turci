@@ -38,6 +38,15 @@ with open('risultati.csv', 'w', encoding='UTF8', newline='') as f:
             data = [y, adiacenze[x][y]]
             writer.writerow(data)
 
+# Ricerca dei punti "notevoli"
+nodi = []
+for x in sorted(adiacenze):
+    for y in sorted(adiacenze[x]):
+        if len(adiacenze[x]) == 1:
+            nodi.append(x)
+print(nodi)
+# Verificare se tale lista di nodi si può ricavare da una funzione di nx
+
 # Calcolo Floyd-Warshall
 G = nx.Graph()
 G.add_nodes_from(sorted(nodes))
