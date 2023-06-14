@@ -71,8 +71,8 @@ with open('distanze.csv', 'w', encoding='UTF8', newline='') as f:
     for x in f_w:
         if x in nodi:
             writer.writerow(x)
-        for y in f_w[x]:
-            if y in nodi:
-                data = [y, f_w[x][y]]
-                writer.writerow(data)
+            for y in f_w[x]:
+                if y in nodi:
+                    data = [y, f_w[x][y]]
+                    writer.writerow(data)
             
