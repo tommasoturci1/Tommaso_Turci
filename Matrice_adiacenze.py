@@ -59,8 +59,18 @@ print(list(G.edges))
 # Con floyd_warshall_numpy (a differenza di floyd_warshall "classico")
 # posso inserire una lista di nodi limitata di cui calcolare i percorsi minimi
 F_W = nx.floyd_warshall_numpy(G)
-print(F_W)
+f_w = nx.floyd_warshall(G)
+#Valutare se possibile creare sottografo con solo i punti "notevoli" dalla lista nodi
+
+with open('distanze_matrice.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerows(F_W)
 
 with open('distanze.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
-    writer.writerows(F_W)
+    for x in f_w:
+        writer.writerow(x)
+        for y in sorted(f_w[x]):
+            data = [y, f_w[x][y]]
+            writer.writerow(data)
+            
