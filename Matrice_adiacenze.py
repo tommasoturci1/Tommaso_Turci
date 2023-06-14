@@ -56,18 +56,23 @@ for x in sorted(adiacenze):
 print(G)
 print(list(G.nodes))
 print(list(G.edges))
-F_W = nx.floyd_warshall_numpy(G)
+#Matrice
+F_W = nx.floyd_warshall_numpy(G) 
+#Dizionario
 f_w = nx.floyd_warshall(G)
 
 with open('distanze_matrice.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
     writer.writerows(F_W)
 
+#Scrivo solo le distanze tra i punti "notevoli" della lista nodi
 with open('distanze.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
     for x in f_w:
-        writer.writerow(x)
-        for y in sorted(f_w[x]):
-            data = [y, f_w[x][y]]
-            writer.writerow(data)
+        if x in nodi:
+            writer.writerow(x)
+        for y in f_w[x]:
+            if y in nodi:
+                data = [y, f_w[x][y]]
+                writer.writerow(data)
             
